@@ -1,0 +1,23 @@
+# For development this standalone plugin uses the same basic information:
+# world + WorldGuard region id.
+#
+# Production integration later obtains this information directly
+# from StoryDungeon instead.
+
+dungeons:
+
+  castle:
+    world: world
+    region: castle_dungeon
+
+spawn:
+
+  # Maximum amount of randomized candidates checked for one teleport.
+  attempts: 50
+
+  # Spawn candidates should be somewhere within this distance
+  # from the outer area/boundary of the dungeon region.
+  edge-distance: 5
+
+  # Try to avoid spawning closer than this to another player.
+  minimum-player-distance: 15
