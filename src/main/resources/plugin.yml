@@ -1,21 +1,35 @@
 name: RegionRTP
 version: '${version}'
-main: dev.kyuba.regionrtp.RegionRTP
-api-version: '1.21'
+main: dev.kyuba.region_rtp.RegionRTP
+api-version: '1.18'
 author: Kyuba
+website: https://github.com/Kyuba173/regionRTP
 
-description: StoryDungeon addon plugin for random teleports to a dungeonregion.
+description: Random teleport plugin for WorldGuard regions.
 
 depend:
   - WorldGuard
 
 commands:
   regionrtp:
-    description: Test randomized dungeon spawn teleportation.
-    usage: /regionrtp [dungeon]
-    permission: regionrtp.test
+    description: Randomized region spawn teleportation.
+    usage: /regionrtp <region>
+    permission: regionrtp.use
+  rrtp:
+    description: Admin commands for managing RegionRTP regions and settings.
+    usage: /rrtp <add|remove|set|list|info|config|reload>
+    permission: regionrtp.admin
 
 permissions:
-  regionrtp.test:
-    description: Allows testing randomized dungeon teleportation.
+  regionrtp.use:
+    description: Base permission required to use /regionrtp.
+    default: op
+  regionrtp.*:
+    description: Allows teleporting to any configured region.
+    default: op
+  regionrtp.admin:
+    description: Allows managing regions and settings via /rrtp.
+    default: op
+  regionrtp.admin.reload:
+    description: Allows reloading the RegionRTP config.
     default: op

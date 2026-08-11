@@ -1,23 +1,19 @@
-# For development this standalone plugin uses the same basic information:
-# world + WorldGuard region id.
-#
-# Production integration later obtains this information directly
-# from StoryDungeon instead.
+# RegionRTP configuration.
 
-dungeons:
+# regions: per-region settings — logical id → WorldGuard region
+# spawn: global candidate search settings (applies to all regions)
+
+regions:
 
   castle:
     world: world
-    region: castle_dungeon
+    region: castle_region
+    require-sky-exposure: true    # no solid blocks above head. default: true
+    allow-water: false            # allow spawning in water. default: false
+    teleport-delay-seconds: 0     # stand-still delay before teleport (0-60). default: 0
+    cooldown-seconds: 0           # cooldown after teleport (0-3600). default: 0
 
 spawn:
-
-  # Maximum amount of randomized candidates checked for one teleport.
-  attempts: 50
-
-  # Spawn candidates should be somewhere within this distance
-  # from the outer area/boundary of the dungeon region.
-  edge-distance: 5
-
-  # Try to avoid spawning closer than this to another player.
-  minimum-player-distance: 15
+  attempts: 50                    # candidates per teleport (1-500). default: 50
+  edge-distance: 5               # edge band width in blocks (0-256). default: 5
+  minimum-player-distance: 15    # preferred min distance from players (0-1024). default: 15

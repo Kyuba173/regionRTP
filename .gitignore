@@ -1,8 +1,13 @@
 .gradle/
 build/
 out/
+bin/
 .idea/
 *.iml
 *.log
 run/
 .vscode/
+.classpath
+.project
+.settings/
+.factorypath

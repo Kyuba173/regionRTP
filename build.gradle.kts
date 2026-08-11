@@ -3,9 +3,9 @@ plugins {
 }
 
 group = "dev.kyuba"
-version = "0.1.0"
+version = "1.0.0"
 
-description = "StoryDungeon addon plugin for random teleports to a dungeonregion"
+description = "Random teleport plugin for WorldGuard regions"
 
 repositories {
     maven {
@@ -20,8 +20,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:26.2.build.+")
-    compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.0.17")
+    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.0.7")
+
+    testImplementation(platform("org.junit:junit-bom:6.1.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 java {
@@ -31,7 +35,19 @@ java {
 tasks {
     compileJava {
         options.encoding = "UTF-8"
-        options.release.set(25)
+        options.release.set(17)
+    }
+
+    compileTestJava {
+        options.encoding = "UTF-8"
+        options.release.set(17)
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
     }
 
     processResources {
