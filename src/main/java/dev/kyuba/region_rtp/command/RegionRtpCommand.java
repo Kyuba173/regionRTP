@@ -41,7 +41,7 @@ public final class RegionRtpCommand implements TabExecutor {
         }
 
         if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("regionrtp.admin.reload")) {
+            if (!sender.hasPermission("regionrtp.admin")) {
                 sender.sendMessage("§cYou don't have permission to reload the config.");
                 return true;
             }
@@ -62,9 +62,9 @@ public final class RegionRtpCommand implements TabExecutor {
             return true;
         }
 
-        // Per-region permission: regionrtp.<regionId> or regionrtp.*
-        String regionPermission = "regionrtp." + regionId;
-        if (!sender.hasPermission(regionPermission) && !sender.hasPermission("regionrtp.*")) {
+        // Per-region permission: regionrtp.regions.<regionId> or regionrtp.regions.*
+        String regionPermission = "regionrtp.regions." + regionId;
+        if (!sender.hasPermission(regionPermission) && !sender.hasPermission("regionrtp.regions.*")) {
             sender.sendMessage("§cYou don't have permission to teleport to §e" + regionId + "§c.");
             return true;
         }
@@ -110,12 +110,12 @@ public final class RegionRtpCommand implements TabExecutor {
         }
         String prefix = args[0].toLowerCase(Locale.ROOT);
         List<String> result = new ArrayList<>();
-        if ("reload".startsWith(prefix) && sender.hasPermission("regionrtp.admin.reload")) {
+        if ("reload".startsWith(prefix) && sender.hasPermission("regionrtp.admin")) {
             result.add("reload");
         }
-        boolean wildcard = sender.hasPermission("regionrtp.*");
+        boolean wildcard = sender.hasPermission("regionrtp.regions.*");
         for (RtpRegion r : regionSource.regions()) {
-            if (r.id().startsWith(prefix) && (wildcard || sender.hasPermission("regionrtp." + r.id()))) {
+            if (r.id().startsWith(prefix) && (wildcard || sender.hasPermission("regionrtp.regions." + r.id()))) {
                 result.add(r.id());
             }
         }

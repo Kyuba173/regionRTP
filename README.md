@@ -67,10 +67,9 @@ Invalid values are clamped at load time with a log warning.
 | Permission | Default | Description |
 |------------|---------|-------------|
 | `regionrtp.use` | op | Use `/regionrtp`. |
-| `regionrtp.<region>` | — | Teleport to a specific region. |
-| `regionrtp.*` | op | Teleport to any region. |
-| `regionrtp.admin` | op | Manage regions via `/rrtp`. |
-| `regionrtp.admin.reload` | op | Reload config. |
+| `regionrtp.regions.<region>` | — | Teleport to a specific region. |
+| `regionrtp.regions.*` | op | Teleport to any region. |
+| `regionrtp.admin` | op | Full access to all commands and features. |
 
 ## Admin commands (`/rrtp`)
 
@@ -146,7 +145,7 @@ before using that region again.
 ./gradlew build
 ```
 
-Output: `build/libs/regionRTP-1.0.0.jar`
+Output: `build/libs/regionRTP-1.0.1.jar`
 
 ## Tests
 

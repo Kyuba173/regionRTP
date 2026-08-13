@@ -24,12 +24,14 @@ permissions:
   regionrtp.use:
     description: Base permission required to use /regionrtp.
     default: op
-  regionrtp.*:
+  regionrtp.regions.*:
     description: Allows teleporting to any configured region.
     default: op
+    children:
+      regionrtp.use: true
   regionrtp.admin:
-    description: Allows managing regions and settings via /rrtp.
+    description: Full access to all RegionRTP commands and features.
     default: op
-  regionrtp.admin.reload:
-    description: Allows reloading the RegionRTP config.
-    default: op
+    children:
+      regionrtp.use: true
+      regionrtp.regions.*: true

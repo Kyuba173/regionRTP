@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "dev.kyuba"
-version = "1.0.0"
+version = "1.0.1"
 
 description = "Random teleport plugin for WorldGuard regions"
 
